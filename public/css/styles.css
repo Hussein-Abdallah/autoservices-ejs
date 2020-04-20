@@ -2,6 +2,9 @@ body {
   margin: 0 !important;
   font-family: 'Roboto', sans-serif;
   color: #1b1b1c;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 h1,h2,h3,h4,h5,h6,span.h1,span.h2 {
   font-family: 'Volkhov', serif;
@@ -595,7 +598,9 @@ color: #f8c12c;
 /* end of footer */
 
 /* Login Page Styling */
-
+#signIn {
+  flex-grow: 1;
+}
 .login-card-yellow {
   background: linear-gradient(145deg, #FFC107, #FFEB3B);
 }
