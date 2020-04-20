@@ -14,8 +14,11 @@ router.get('/login', isLoggedIn, async (req,res)=>{
     })
 })
 
-router.get('/register', async (req,res)=>{
-    res.render('register')
+router.get('/register', isLoggedIn, async (req,res)=>{
+    res.render('register',{
+        isLogged: req.isLogged,
+        alerts: req.flash('error')
+    })
 })
 
 //Google Authentication
