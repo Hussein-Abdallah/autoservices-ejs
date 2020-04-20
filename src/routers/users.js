@@ -53,31 +53,30 @@ router.post('/register', async (req,res)=>{
 
 })
 
-router.post("/login", passport.authenticate("local", 
-  { successRedirect: "/", 
-    failureRedirect: "/login", 
-    failureFlash: true })
-);
+// router.post("/login", passport.authenticate("local", 
+//   { successRedirect: "/", 
+//     failureRedirect: "/login", 
+//     failureFlash: true })
+// );
 
-// // Login Post
-// router.post('/login', async (req,res, next)=>{
+// Login Post
+router.post('/login', async (req,res, next)=>{
     
-//     const user = new  User ({
-//         username: req.body.username,
-//         password: req.body.password
-//     })
+    const user = new  User ({
+        username: req.body.username,
+        password: req.body.password
+    })
     
-//     // login function from passport
-//     req.login(user, (err)=>{
-//         if (err) {
-//             console.log(err)
-//             res.redirect('/')
-//         }
-//         passport.authenticate('local')(req,res, function(){
-//             res.redirect('/')
-//         })
-//     })
-// })
+    // login function from passport
+    req.login(user, (err)=>{
+        if (err) {
+            res.status(500).send('500 error try again')
+        }
+        passport.authenticate('local')(req,res, function(){
+            res.redirect('/')
+        })
+    })
+})
 
 //change password
 router.post('/password',async (req,res)=>{
