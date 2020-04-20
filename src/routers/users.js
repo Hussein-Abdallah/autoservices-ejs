@@ -72,6 +72,9 @@ router.post('/login', async (req,res, next)=>{
         if (err) {
             res.status(500).send('500 error try again')
         }
+        if (!user) {
+            res.status(500).send('500 error try again')
+        }
         passport.authenticate('local')(req,res, function(){
             res.redirect('/')
         })
