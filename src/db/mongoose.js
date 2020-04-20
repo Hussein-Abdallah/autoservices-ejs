@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1:27017/auto-services', { 
+mongoose.connect('mongodb+srv://'+process.env.DB_USERNAME+':'+process.env.DB_PASSWORD+'@cluster0-ul11x.mongodb.net/autoservices', { 
     useUnifiedTopology: true, 
     useNewUrlParser: true,
     useCreateIndex: true,

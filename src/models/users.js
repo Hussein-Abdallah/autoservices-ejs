@@ -69,7 +69,7 @@ User.findById(id, function(err, user) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/autoservices",
+    callbackURL: "https://bogas-autoservices.herokuapp.com/auth/google/autoservices",
     userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
   },
     function(accessToken, refreshToken, profile, done) {
@@ -100,8 +100,8 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/autoservices",
-    profileFields: ['email','displayName', 'first_name','last_name','gender','link', 'picture.type(large)', 'location', 'friends']
+    callbackURL: "https://bogas-autoservices.herokuapp.com/auth/facebook/autoservices",
+    profileFields: ['email','displayName', 'first_name','last_name','gender','link', 'picture.type(large)', 'location']
   },
   function(accessToken, refreshToken, profile, done) {
     //console.log(profile)
