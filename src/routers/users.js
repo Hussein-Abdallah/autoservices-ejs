@@ -2,12 +2,12 @@ const express = require('express');
 const passport = require('passport')
 const isLoggedIn = require('../middleware/isLogged')
 const User = require('../models/users')
+const _ = require('lodash')
+
 
 const router = new express.Router();
 
 router.get('/login', isLoggedIn, async (req,res)=>{
-    // console.log(req.flash())
-    // console.log(req.session)
     res.render('login', {
         isLogged: req.isLogged,
         alerts: req.flash('error')
@@ -15,6 +15,9 @@ router.get('/login', isLoggedIn, async (req,res)=>{
 })
 
 router.get('/register', isLoggedIn, async (req,res)=>{
+    if(req.isLogged === true){
+        return res.redirect('/')
+    }
     res.render('register',{
         isLogged: req.isLogged,
         alerts: req.flash('error')
@@ -42,12 +45,18 @@ router.get('/auth/facebook/autoservices', passport.authenticate('facebook', { fa
 router.post('/register', async (req,res)=>{
     
     try {
-        await User.register({username: req.body.username}, req.body.password)
-        passport.authenticate('local')(req,res, function(){
-            res.redirect('/secrets')
+        const newUser = await User.register({username: _.toLower(req.body.username)}, req.body.password)
+        newUser.firstName = req.body.firstName
+        newUser.lastName = req.body.lastName
+        newUser.email = req.body.email
+        newUser.phoneNumber = req.body.phoneNumber
+        newUser.terms = req.body.terms
+        await newUser.save()
+        passport.authenticate('local',{failureFlash:true})(req,res, function(){
+            res.redirect('/')
         })
     } catch (error) {
-        console.log(error.message)
+        req.flash('error', error.message)
         res.redirect('/register')
     }
 

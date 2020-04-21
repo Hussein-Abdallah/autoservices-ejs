@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const passport = require('passport')
+const hashPassword = require('passport-local-authenticate');
 //const passportLocalMongoose = require('passport-local-mongoose')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
@@ -12,14 +13,18 @@ const passportLocalMongoose = require('passport-local-mongoose')
 
 const userSchema = new mongoose.Schema({
 
-    
-    email: String,
     username: String,
+    email: String,
+    salt: String,
+    hash: String,
+    firstName: String,
+    lastName: String,
+    phoneNumber: String,
+    terms: Boolean,
     provider: String,
-    password:  String,
     googleId: String,
-    facebookId: String,
-    name: String
+    facebookId: String
+
 
 })
 
