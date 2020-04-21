@@ -598,7 +598,7 @@ color: #f8c12c;
 /* end of footer */
 
 /* Login Page Styling */
-#signIn {
+.flex-grow-1 {
   flex-grow: 1;
 }
 .login-card-yellow {
@@ -623,4 +623,7 @@ color: #f8c12c;
   position: relative;
   background: linear-gradient(to right, rgb(250, 171, 0), #FFEB3B);
   padding: 3px;
+}
+.w-45{
+  width: 45% !important;
 }

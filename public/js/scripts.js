@@ -25,7 +25,7 @@ $( document ).ready(function() {
         time: 3000,
     })
     
-    
+    $('#phoneNumber').mask('(999) 999-9999');
       
   
 });

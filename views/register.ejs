@@ -1,47 +1,89 @@
 <%- include('partials/header') %>
-<div class="container mt-5">
-  <h1>Register</h1>
 
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card">
-        <div class="card-body">
+<section class="flex-grow-1">
+  <div class="container-fluid my-5 pb-5">
+    <div class="row justify-content-end">
+      <div class="col-md-5 col-12">
+        <div class="login-card-yellow p-3 box-shadow rounded text-center">
+          <div class="pt-3">
+            <h2 class="text-dark">Register</h2>
+          </div>
+          <div class="mt-3 d-flex justify-content-center text-left">
+            <form class="w-sm-75" action="/register" method="POST">
+              <div class="clearfix">
+                <div class="form-group float-left w-45 ">
+                  <label class="mb-0" for=""><small class=" font-weight-bold">First Name</small></label>
+                  <input type="text" name="firstName" class="form-control form-control-sm bg-light" required>
+                </div>
+                <div class="form-group float-right w-45">
+                  <label class="mb-0" for=""><small class=" font-weight-bold">Last Name</small></label>
+                  <input type="text" name="lastName" class="form-control form-control-sm bg-light" required>
+                </div>
+              </div>
+              <div class="form-group ">
+                <label class="mb-0"><small class=" font-weight-bold">Email</small></label>
+                <input type="email" name="email" class="form-control form-control-sm bg-light" required>
+              </div>
+              <div class="form-group">
+                <label class="mb-0"><small class=" font-weight-bold">Username</small></label>
+                <input type="text" name="username" class="form-control form-control-sm bg-light" required>
+              </div>
+              <div class="clearfix">
+                <div class="form-group float-left w-45">
+                  <label class="mb-0" for=""><small class=" font-weight-bold">Password</small></label>
+                  <input type="text" name="firstName" class="form-control form-control-sm bg-light" required>
+                </div>
+                <div class="form-group float-right w-45">
+                  <label class="mb-0" for=""><small class=" font-weight-bold">Confirm Password</small></label>
+                  <input type="text" name="lastName" class="form-control form-control-sm bg-light" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="mb-0" for=""><small class=" font-weight-bold">Phone Number</small></label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control form-control-sm bg-light"
+                  required>
+              </div>
+              <div class="form-group">
+                <div class="input-group-prepend">
+                  <input type="checkbox" class="mr-3" aria-label="Checkbox for accepting AutoServices Terms and Conditions">
+                  <small class=" font-weight-bold">I accept the terms and conditions</small>
+                </div>
 
-          <!-- Makes POST request to /register route -->
-          <form action="/register" method="POST">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" name="username">
+              </div>
+              <div class="font-weight-bold mt-2">
+                <p class="m-0"><%=alerts%></p>
+              </div>
+              <div class="mt-4 d-flex justify-content-center">
+                <button class="btn btn-sm btn-light col-12 col-md-8">
+                  Register
+                </button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-4 col-12 mt-3 mt-md-0">
+        <div class="row module-border-wrap  mx-0">
+          <div class="pt-3 bg-white w-100">
+            <div class="py-3 text-center">
+              <h4 class="text-dark"> Social Login</h4>
+              <p class="text-center">Login with your social media account</p>
+
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" name="password">
+            <div class="social-btn text-center w-100 px-1 pb-3">
+              <a class="btn btn-block btn-social btn-md btn-facebook" href="/auth/facebook" role="button"><i
+                  class="fab fa-facebook"></i> Sign in with <b>Facebook</b></a>
+              <a class="btn btn-social btn-md btn-google btn-block" href="/auth/google" role="button"><i
+                  class="fab fa-google"></i> Sign in with <b>Google</b></a>
             </div>
-            <button type="submit" class="btn btn-dark">Register</button>
-          </form>
-
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="col-sm-4">
-      <div class="card social-block">
-        <div class="card-body">
-          <a class="btn btn-block btn-social btn-md btn-google" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign Up with Google
-          </a>
-        </div>
-        <div class="card-body">
-          <a class="btn btn-block btn-social btn-md btn-facebook" href="/auth/facebook" role="button">
-            <i class="fab fa-facebook"></i>
-            Sign Up with Facebook
-          </a>
-        </div>
-      </div>
-    </div>
-
   </div>
-</div>
+  </div>
+</section>
 
 <%- include('partials/footer') %>
