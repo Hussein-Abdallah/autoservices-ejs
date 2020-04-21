@@ -14,13 +14,11 @@ const userSchema = new mongoose.Schema({
 
     username: {
         type: String,
-        required: true,
-        unique: true,
-        validate(value) {
-            if(!validator.isEmail(value)) {
-                throw new Error('Email is invalid')
-            }
-        },
+        // validate(value) {
+        //     if(!validator.isEmail(value)) {
+        //         throw new Error('Email is invalid')
+        //     }
+        // },
         trim: true,
         lowercase: true
     },
