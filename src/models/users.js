@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
         trim: true,
         lowercase: true
     },
+    email: String,
     provider: String,
     password:  String,
     googleId: String,
@@ -82,7 +83,7 @@ passport.use(new GoogleStrategy({
             if (!user) {
                 user = new User({
                     name: profile.displayName,
-                    username: profile.emails[0].value,
+                    email: profile.emails[0].value,
                     provider: 'Google',
                     googleId: profile.id
                 });
@@ -114,7 +115,7 @@ passport.use(new FacebookStrategy({
         if (!user) {
             user = new User({
                 name: profile.displayName,
-                username: profile.emails[0].value,
+                email: profile.emails[0].value,
                 provider: 'Facebook',
                 facebookId: profile.id
             });

@@ -34,7 +34,7 @@ router.get('/auth/facebook', passport.authenticate('facebook', {
 scope: ['user_location', 'email', 'user_friends']
 }));
 
-router.get('/auth/facebook/autoservices', passport.authenticate('facebook', { failureRedirect: '/login' }), function(req, res) {
+router.get('/auth/facebook/autoservices', passport.authenticate('facebook', { failureRedirect: '/login', failureFlash: true }), function(req, res) {
     res.redirect('/');
 });
 
