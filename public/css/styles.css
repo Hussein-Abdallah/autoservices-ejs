@@ -56,6 +56,7 @@ color: #f8c12c;
   color: #f8c12c;
   pointer-events: none;
   cursor: default;  
+  transition: all 0.2s;
 }
 
 .line1, .line2, .line3 {
@@ -182,7 +183,7 @@ color: #f8c12c;
 }
 
 .banner-section {
-  background-image: url("./imgs/tire-service-edmonton-banner.jpg");
+  background-image: url("/imgs/tire-service-edmonton-banner.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 60px;
@@ -405,7 +406,7 @@ color: #f8c12c;
 }
 
 .testimonial-section {
-  background-image: url("./imgs/testimonial-bg.jpg");
+  background-image: url("/imgs/testimonial-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;

@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+    $('nav a[href="/' + location.pathname.split("/")[1] + '"]:first-child').addClass('nav-active');
+    
     $('.carousel').carousel({
         interval: 10000
     })
@@ -26,7 +28,11 @@ $( document ).ready(function() {
     })
     
     $('#phoneNumber').mask('(999) 999-9999');
-      
+
+
+
+
+
   
 });
 

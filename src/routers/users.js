@@ -14,6 +14,13 @@ router.get('/login', isLoggedIn, async (req,res)=>{
     })
 })
 
+router.get('/about', isLoggedIn, async (req,res)=>{
+    res.render('home', {
+        isLogged: req.isLogged,
+        alerts: req.flash('error')
+    })
+})
+
 router.get('/register', isLoggedIn, async (req,res)=>{
     if(req.isLogged === true){
         return res.redirect('/')
@@ -62,33 +69,36 @@ router.post('/register', async (req,res)=>{
 
 })
 
-router.post("/login", passport.authenticate("local", 
-  { successRedirect: "/", 
-    failureRedirect: "/login", 
-    failureFlash: true })
-);
+// router.post("/login", passport.authenticate("local", 
+//   { successRedirect: "/", 
+//     failureRedirect: "/login", 
+//     failureFlash: true })
+// );
 
-// // Login Post
-// router.post('/login', async (req,res, next)=>{
+// Login Post
+router.post('/login', async (req,res, next)=>{
+    console.log(req.path)
+    const user = new  User ({
+        username: req.body.username,
+        password: req.body.password
+    })
     
-//     const user = new  User ({
-//         username: req.body.username,
-//         password: req.body.password
-//     })
-    
-//     // login function from passport
-//     req.login(user, (err)=>{
-//         if (err) {
-//             res.status(500).send('500 error try again')
-//         }
-//         if (!user) {
-//             res.status(500).send('500 error try again')
-//         }
-//         passport.authenticate('local')(req,res, function(){
-//             res.redirect('/')
-//         })
-//     })
-// })
+    // login function from passport
+    req.login(user, (err)=>{
+        if (err) {
+            res.status(500).send('500 error try again')
+        }
+        if (!user) {
+            res.status(500).send('500 error try again')
+        }
+        passport.authenticate('local')(req,res, function(){
+            console.log(req.originalUrl)
+            console.log(req.path)
+
+            res.redirect('/')
+        })
+    })
+})
 
 //change password
 router.post('/password',async (req,res)=>{
