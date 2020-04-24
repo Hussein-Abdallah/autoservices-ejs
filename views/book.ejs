@@ -1,8 +1,57 @@
 <%- include('partials/header') %>
 
-<section class="flex-grow-1">
-    
+<section class="booking d-flex flex-grow-1 align-items-center">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-12">
+            <div class="text-center image-container">
+                <h1 class="text-capitalize text-white mt-0 mb-4">Tire changing made easy</h1>
+                <p class="text-white">Book expert tire changers  at a moment's notice. Pick a time and we'll do the rest</p>
+                <form action="/verifylocation" method="POST" class="form-wrap">
+                    <div class="btn-group">
+                            <input type="text" name="postalCode" placeholder="Postal code" class="input1">
+                            <button type="submit" class="btn-form">Continue<i class="fas fa-chevron-right text-black"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 </section>
 
 
+
 <%- include('partials/footer') %>
+
+<!-- <html>
+<head>
+    <meta charset="utf-8" />
+    <title>Datepicker example</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .gj-picker-md [role="header"]{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <input id="datepicker" width="276" />
+    <script>
+        var today;
+    today = function() {
+            var date = new Date();
+            date.setDate(date.getDate()+1);
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        };
+        $('#datepicker').datepicker({ format: 'dd mmmm yyyy', footer: true, modal: false, header: false, minDate: today });
+        var ok = $('.gj-button-md').last()
+        ok.click(function(){
+            alert($('#datepicker').val())
+        })
+    </script>
+</body>
+</html> -->

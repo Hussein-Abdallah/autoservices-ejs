@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 const ejs = require('ejs')
 const isLoggedIn = require('./middleware/isLogged')
 const userRouter = require('./routers/users')
+const bookingRouter = require('./routers/booking')
 
 
 require('./db/mongoose')
@@ -15,7 +16,7 @@ require('./db/mongoose')
 const app = express();
 app.set('view engine', 'ejs');
 
-
+var visited = '/'
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"));
 app.use(session({
@@ -29,6 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash())
 app.use(userRouter)
+app.use(bookingRouter)
 
 app.get('/', isLoggedIn, (req,res)=>{
     res.render('index', {

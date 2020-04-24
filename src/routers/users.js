@@ -4,10 +4,10 @@ const isLoggedIn = require('../middleware/isLogged')
 const User = require('../models/users')
 const _ = require('lodash')
 
-
 const router = new express.Router();
 
 router.get('/login', isLoggedIn, async (req,res)=>{
+    visited = '/'
     res.render('login', {
         isLogged: req.isLogged,
         alerts: req.flash('error')
@@ -22,6 +22,7 @@ router.get('/about', isLoggedIn, async (req,res)=>{
 })
 
 router.get('/register', isLoggedIn, async (req,res)=>{
+    visited = '/'
     if(req.isLogged === true){
         return res.redirect('/')
     }
@@ -36,6 +37,7 @@ router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 
 
 router.get('/auth/google/autoservices', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
     // Successful authentication, redirect home.
+    console.log(visited)
     res.redirect('/');
 });
 
@@ -45,12 +47,12 @@ scope: ['user_location', 'email', 'user_friends']
 }));
 
 router.get('/auth/facebook/autoservices', passport.authenticate('facebook', { failureRedirect: '/login', failureFlash: true }), function(req, res) {
+    console.log(visited)
     res.redirect('/');
 });
 
 
 router.post('/register', async (req,res)=>{
-    
     try {
         const newUser = await User.register({username: _.toLower(req.body.username)}, req.body.password)
         newUser.firstName = req.body.firstName
@@ -77,7 +79,8 @@ router.post('/register', async (req,res)=>{
 
 // Login Post
 router.post('/login', async (req,res, next)=>{
-    console.log(req.path)
+    console.log(visited)
+    // console.log(req.path)
     const user = new  User ({
         username: req.body.username,
         password: req.body.password
@@ -92,8 +95,7 @@ router.post('/login', async (req,res, next)=>{
             res.status(500).send('500 error try again')
         }
         passport.authenticate('local')(req,res, function(){
-            console.log(req.originalUrl)
-            console.log(req.path)
+            // console.log(req.path)
 
             res.redirect('/')
         })
