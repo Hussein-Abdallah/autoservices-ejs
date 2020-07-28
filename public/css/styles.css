@@ -720,7 +720,7 @@ color: #f8c12c;
   background: url("/imgs/TecAlliance-Tyres-Image.jpg") no-repeat center;
   background-size: cover;
   position: relative;
-  min-height: 35vh;
+  min-height: 45vh;
 }
 
 .b-lrb {
@@ -731,10 +731,9 @@ color: #f8c12c;
 .booking-section {
   position: relative;
   margin-top: -190px;
-  min-height: 500px;
+  min-height: 477px;
   background-color: #fff;
   box-shadow: 0 10px 20px rgba(0,0,0,.15);
-  padding-top: 15px;
   border-radius: 8px 8px 0 0;
 }
 

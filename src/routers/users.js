@@ -37,8 +37,7 @@ router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 
 
 router.get('/auth/google/autoservices', passport.authenticate('google', { failureRedirect: '/login' }), function(req, res) {
     // Successful authentication, redirect home.
-    console.log(visited)
-    res.redirect('/');
+    res.redirect(visited);
 });
 
 // Facebook Authentication
@@ -47,8 +46,7 @@ scope: ['user_location', 'email', 'user_friends']
 }));
 
 router.get('/auth/facebook/autoservices', passport.authenticate('facebook', { failureRedirect: '/login', failureFlash: true }), function(req, res) {
-    console.log(visited)
-    res.redirect('/');
+    res.redirect(visited);
 });
 
 
@@ -72,14 +70,13 @@ router.post('/register', async (req,res)=>{
 })
 
 // router.post("/login", passport.authenticate("local", 
-//   { successRedirect: "/", 
+//   { successRedirect: visited, 
 //     failureRedirect: "/login", 
 //     failureFlash: true })
 // );
 
 // Login Post
 router.post('/login', async (req,res, next)=>{
-    console.log(visited)
     // console.log(req.path)
     const user = new  User ({
         username: req.body.username,
@@ -92,12 +89,12 @@ router.post('/login', async (req,res, next)=>{
             res.status(500).send('500 error try again')
         }
         if (!user) {
-            res.status(500).send('500 error try again')
+            return res.status(500).send('500 error try again')
         }
         passport.authenticate('local')(req,res, function(){
             // console.log(req.path)
 
-            res.redirect('/')
+            res.redirect(visited)
         })
     })
 })
@@ -117,6 +114,7 @@ router.post('/password',async (req,res)=>{
 
 // Logout Function
 router.get('/logout', (req, res) =>{
+
     req.logout();
     res.redirect('/')
 })

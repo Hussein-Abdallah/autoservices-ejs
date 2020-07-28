@@ -14,7 +14,7 @@ router.get('/bookappointment',isLoggedIn, (req,res)=>{
     })
 })
 
-router.post('/verifylocation', isLoggedIn, async (req,res)=>{
+router.post('/booking-location', isLoggedIn, async (req,res)=>{
     const postalCode = req.body.postalCode
     visited = "/loginbooking"
     try {
@@ -28,14 +28,18 @@ router.post('/verifylocation', isLoggedIn, async (req,res)=>{
                     code: postalCode
                 })
                 await newcode.save()
-                return res.status(201).send(newcode)
-            } else {
-                return res.status(200).send('Coming soon')
             }
+                return res.status(200).send('Coming soon')
         }
-        res.status(200).render('loginbooking', {
-            isLogged: req.isLogged
-        })
+        if (req.isLogged === false){
+            res.status(200).render('loginbooking', {
+                isLogged: req.isLogged
+            })
+        } else {
+            res.status(200).render('index', {
+                isLogged: req.isLogged
+            })
+        }
     } catch (error) {
         console.log(error)
     }
