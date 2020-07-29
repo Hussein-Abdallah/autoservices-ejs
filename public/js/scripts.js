@@ -30,7 +30,14 @@ $( document ).ready(function() {
     $('#phoneNumber').mask('(999) 999-9999');
 
 
-
+    $(window).scroll(function(){
+        let position =$(this).scrollTop();
+        if(position >=200) {
+            $('#topbar').addClass('hide');
+        } else {
+            $('#topbar').removeClass('hide');
+        }
+    })
 
 
   

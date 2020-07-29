@@ -36,6 +36,10 @@ border-top: 7px solid;
 border-image: repeating-linear-gradient(-80deg, black, black 5px, #fff100 5px, #fff100 10px) 25;
 background-color: #fff100;
 }
+
+.hide {
+  display: none;
+}
 .menu-item {
   font-size: 14px;
   letter-spacing: 1px;
