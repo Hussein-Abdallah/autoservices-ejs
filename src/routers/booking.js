@@ -15,7 +15,8 @@ router.get('/bookappointment',isLoggedIn, (req,res)=>{
 })
 
 router.post('/booking-location', isLoggedIn, async (req,res)=>{
-    const postalCode = req.body.postalCode
+    const location = _.toUpper(req.body.postalCode)
+    let postalCode = location.substring(0,3)
     visited = "/loginbooking"
     try {
         const location = await Location.findOne({code: postalCode})
@@ -29,17 +30,25 @@ router.post('/booking-location', isLoggedIn, async (req,res)=>{
                 })
                 await newcode.save()
             }
-                return res.status(200).send('Coming soon')
+                return res.status(200).render('comingsoon', {
+                    isLogged: req.isLogged,
+                    postal: req.body.postalCode
+                })
         }
-        if (req.isLogged === false){
-            res.status(200).render('loginbooking', {
-                isLogged: req.isLogged
-            })
-        } else {
-            res.status(200).render('index', {
-                isLogged: req.isLogged
-            })
-        }
+
+        res.status(200).render('index', {
+                     isLogged: req.isLogged
+                 })
+        
+        // if (req.isLogged === false){
+        //     res.status(200).render('loginbooking', {
+        //         isLogged: req.isLogged
+        //     })
+        // } else {
+        //     res.status(200).render('index', {
+        //         isLogged: req.isLogged
+        //     })
+        // }
     } catch (error) {
         console.log(error)
     }
@@ -49,10 +58,10 @@ router.post('/booking-location', isLoggedIn, async (req,res)=>{
 router.post('/addlocation', async (req,res)=>{
     const location = new Location({
 
-        code: 'k1k',
-        place: 'Ottawa (Overbrook)',
+        code: 'K2J',
+        place: 'Barrhaven',
         country: 'CA',
-        active: false
+        active: true
     })
 
     try {

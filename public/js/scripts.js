@@ -32,7 +32,7 @@ $( document ).ready(function() {
 
     $(window).scroll(function(){
         let position =$(this).scrollTop();
-        if(position >=200) {
+        if(position >=100) {
             $('#topbar').addClass('hide');
         } else {
             $('#topbar').removeClass('hide');
