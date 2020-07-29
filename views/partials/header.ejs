@@ -47,27 +47,27 @@
               <div class="collapse navbar-collapse justify-content-center text-uppercase font-weight-bold" id="myNavbar">
                 <ul class="navbar-nav ">
                   <li class="nav-item">
-                    <a href="/" class="nav-link m-2 menu-item">Home</a>
+                    <a href="/#home" class="nav-link m-2 menu-item" data-filter="topbar">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a href="/#services" class="nav-link m-2 menu-item">Services</a>
+                    <a href="/#services" class="nav-link m-2 menu-item" data-filter="services">Services</a>
                   </li>
                   <li class="nav-item">
-                    <a href="/#about" class="nav-link m-2 menu-item">About</a>
+                    <a href="/#about" class="nav-link m-2 menu-item" data-filter="about">About</a>
                   </li>
                   <li class="nav-item">
-                    <a href="/#download" class="nav-link m-2 menu-item">Download</a>
+                    <a href="/#download" class="nav-link m-2 menu-item" data-filter="download">Download</a>
                   </li>
                   <li class="nav-item">
-                    <a href="/#news" class="nav-link m-2 menu-item" >News</a>
+                    <a href="/#news" class="nav-link m-2 menu-item" data-filter="news">News</a>
                   </li>
                 </ul>
               </div>
               <div class="justify-content-end font-weight-bold text-uppercase d-none d-lg-block">
                 <ul class="navbar-nav">
                   <% if (isLogged === false) {%>
-                    <li class="nav-item position-relative"><a href="/login" class="loginLink nav-link m-2 menu-item" role="button">Login</a></li>
-                    <li class="nav-item position-relative"><a href="/register" class=" nav-link m-2 menu-item" role="button">Register</a></li>
+                    <li class="nav-item position-relative"><a href="/login" class="loginLink nav-link m-2 menu-item" role="button" data-filter="logins">Login</a></li>
+                    <li class="nav-item position-relative"><a href="/register" class=" nav-link m-2 menu-item" role="button" data-filter="register">Register</a></li>
                   <% } else { %>
                     <li class="nav-item position-relative">
                       <div class="dropdown">

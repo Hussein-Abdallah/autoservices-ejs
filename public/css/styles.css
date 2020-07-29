@@ -21,7 +21,7 @@ h1,h2,h3,h4,h5,h6,span.h1,span.h2 {
 
 .section-padding {
   padding-bottom: 50px;
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 @media (max-width: 768px) {
@@ -657,7 +657,7 @@ color: #f8c12c;
   background-size: cover;
   padding: 10rem 0;
   position: relative;
-  height: 100vh;
+  height: 90vh;
 }
 
 .booking::before {
@@ -766,4 +766,14 @@ color: #f8c12c;
 
 .booking-section a.nav-item:hover {
   color: #e4a805;
+}
+
+
+@media (max-width: 987px) {
+  .display-4 {
+    margin-top:5%;
+    font-size: 2.75rem;
+    font-weight: 300;
+    line-height: 1.0;
+  }
 }

@@ -1,5 +1,17 @@
 $( document ).ready(function() {
-    $('nav a[href="/' + location.pathname.split("/")[1] + '"]:first-child').addClass('nav-active');
+
+    $('.nav-button').click(function(){
+        $('.nav-button').toggleClass('change')
+    })
+
+    $('.menu-item').click(function(){
+        let value = $(this).attr('data-filter');
+        $(this).closest('ul').find('.nav-active').removeClass('nav-active');
+        $(this).addClass('nav-active');
+        $('html, body').animate({
+            scrollTop: $('#'+value).offset().top
+        }, 2000);
+    })
     
     $('.carousel').carousel({
         interval: 10000
@@ -33,9 +45,11 @@ $( document ).ready(function() {
     $(window).scroll(function(){
         let position =$(this).scrollTop();
         if(position >=100) {
-            $('#topbar').addClass('hide');
+            $('#topbar').hide();
+            // $('#topbar').addClass('hide');
         } else {
-            $('#topbar').removeClass('hide');
+            $('#topbar').show();
+            // $('#topbar').removeClass('hide');
         }
     })
 
