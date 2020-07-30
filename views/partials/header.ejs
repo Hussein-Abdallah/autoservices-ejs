@@ -38,7 +38,7 @@
         <!-- Navbar -->
         <div class="container-fluid bg-white">
             <nav class="navbar navbar-expand-lg nav-menu px-md-4 px-1">
-              <a href="/" class="navbar-brand text-dark my-auto"><span class="h1 font-weight-bold text-uppercase">AUTO</span><span class="h2 titleColor">services</span></a>
+              <a href="/" class="title navbar-brand text-dark my-auto"><span class="h1 font-weight-bold text-uppercase">AUTO</span><span class="h2 titleColor">services</span></a>
               <button class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#myNavbar">
                 <div class="bg-dark line1"></div>
                 <div class="bg-dark line2"></div>
@@ -62,26 +62,32 @@
                     <a href="/#news" class="nav-link m-2 menu-item" data-filter="news">News</a>
                   </li>
                 </ul>
+                <div class="dropdown-divider"></div>
+                <div class="justify-content-end font-weight-bold text-uppercase d-block d-lg-none">
+                  <ul class="navbar-nav">
+                    <% if (isLogged === false) {%>
+                      <li class="nav-item position-relative"><a href="/login" class="nav-link m-2 menu-item" role="button" data-filter="logins">Login</a></li>
+                      <!-- <li class="nav-item position-relative"><a href="/register" class=" nav-link m-2 menu-item" role="button" data-filter="register">Register</a></li> -->
+                    <% } else { %>
+                      <li class="nav-item position-relative"><a class="myAccountDropDown mx-2 nav-link menu-item text-capitalize" href="#">My Dashboard</a></li>
+                      <li class="nav-item position-relative"><a class="myAccountDropDown nav-link mx-2 menu-item text-capitalize" href="/logout" role="button">Logout</a></li>
+  
+                    <%}%>
+   
+                  </ul>
+                </div>
+
               </div>
               <div class="justify-content-end font-weight-bold text-uppercase d-none d-lg-block">
                 <ul class="navbar-nav">
                   <% if (isLogged === false) {%>
-                    <li class="nav-item position-relative"><a href="/login" class="loginLink nav-link m-2 menu-item" role="button" data-filter="logins">Login</a></li>
-                    <li class="nav-item position-relative"><a href="/register" class=" nav-link m-2 menu-item" role="button" data-filter="register">Register</a></li>
+                    <li class="nav-item position-relative"><a href="/login" class="nav-link m-2 menu-item" role="button" data-filter="logins">Login</a></li>
+                    <!-- <li class="nav-item position-relative"><a href="/register" class=" nav-link m-2 menu-item" role="button" data-filter="register">Register</a></li> -->
                   <% } else { %>
+                    <li class="nav-item position-relative"><a class="myAccountDropDown mx-2 nav-link menu-item text-capitalize" href="#">My Dashboard</a> </li>
                     <li class="nav-item position-relative">
-                      <div class="dropdown">
-                        <a class="dropdown-toggle nav-link m-2 menu-item" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          My Account
-                        </a>
-                      
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink" style="width: 190px">
-                          <a class="myAccountDropDown mx-2 nav-link menu-item text-capitalize" href="#">My Dashboard</a>
-                          <a class="myAccountDropDown mx-2 nav-link menu-item text-capitalize" href="bookappointment" role="button">Book Appointment</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="myAccountDropDown nav-link mx-2 menu-item text-capitalize" href="/logout" role="button">Logout</a>
-                        </div>
-                      </div>                    
+                      <a class="myAccountDropDown nav-link mx-2 menu-item text-capitalize" href="/logout" role="button"><i class="fas fa-sign-out-alt" style="font-size: 18px;"data-toggle="tooltip" data-placement="top" title="Logout"></i></a>
+                                         
                     </li>
 
                   <%}%>

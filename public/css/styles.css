@@ -58,7 +58,7 @@ color: #f8c12c;
 
 .nav-active {
   color: #f8c12c;
-  pointer-events: none;
+  /* pointer-events: none; */
   cursor: default;  
   transition: all 0.2s;
 }
@@ -775,5 +775,20 @@ color: #f8c12c;
     font-size: 2.75rem;
     font-weight: 300;
     line-height: 1.0;
+  }
+}
+@media (max-width: 768px) {
+  .display-4 {
+    margin-top:5%;
+    font-size: 1.75rem;
+    font-weight: 300;
+    line-height: 1.0;
+    width: 100% !important;
+  }
+  .title .h1 {
+    font-size: 2rem;
+  }
+  .title .h2 {
+    font-size: 1.75rem;
   }
 }

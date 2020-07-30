@@ -36,7 +36,7 @@ router.post('/booking-location', isLoggedIn, async (req,res)=>{
                 })
         }
 
-        res.status(200).render('index', {
+        res.status(200).render('bookingform', {
                      isLogged: req.isLogged
                  })
         
